@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "good_luck_wizard"
+require "glw"
 
 require "pry"
 Pry.start

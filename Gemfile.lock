@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    good_luck_wizard (0.1.0)
+    good_luck_wizard (0.0.1)
       curses (~> 1.4.0)
 
 GEM

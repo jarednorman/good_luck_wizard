@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "good_luck_wizard/version"
+require "glw/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "good_luck_wizard"
-  spec.version       = GoodLuckWizard::VERSION
+  spec.version       = GLW::VERSION
   spec.authors       = ["Jared Norman"]
   spec.email         = ["jared@super.gd"]
 

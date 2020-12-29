@@ -1,3 +1,3 @@
-module GoodLuckWizard
+module GLW
   VERSION = "0.0.1"
 end
