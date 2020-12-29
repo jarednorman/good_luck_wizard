@@ -7,16 +7,25 @@ module GLW
     def start!
       Curses.init_screen
       Curses.start_color
+      Curses.use_default_colors
       Curses.curs_set(0)
       Curses.noecho
 
-      Curses.init_pair(1, 2, 1)
       win = Curses::Window.new(0, 0, 0, 0)
       win.setpos(0, 0)
-      win << "started"
+      win << "@"
       win.refresh
 
-      sleep 3
+      sleep 1
+
+      win.setpos(0, 0)
+      win << " "
+      win.setpos(1, 1)
+      win << "@"
+
+      win.refresh
+
+      sleep 1
 
       Curses.close_screen
     end
