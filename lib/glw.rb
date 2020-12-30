@@ -10,7 +10,7 @@ module GLW
       Curses.curs_set(0)
       Curses.noecho
 
-      Curses.assume_default_colors(255, 233)
+      Curses.assume_default_colors(255, 16)
       win = Curses::Window.new(0, 0, 0, 0)
       win.setpos(0, 0)
       win << "@"
