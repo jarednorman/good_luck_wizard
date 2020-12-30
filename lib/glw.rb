@@ -8,7 +8,7 @@ module GLW
     def start!
       initialize_zeitwerk
 
-      GLW::Term.with_term do
+      GLW::Term.with_term do |t|
         sleep 1
       end
     end
