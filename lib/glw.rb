@@ -9,19 +9,27 @@ module GLW
       initialize_zeitwerk
 
       GLW::Term.with_term do |t|
-        t.set(x: 0, y: 0, c: "@")
-        t.refresh
-        sleep 1
-
-        t.set(x: 0, y: 0, c: " ")
-        t.set(x: 1, y: 1, c: "@")
-        t.refresh
-        sleep 1
-
-        t.set(x: 1, y: 1, c: " ")
-        t.set(x: 2, y: 2, c: "@")
-        t.refresh
-        sleep 1
+        loop do
+          t.width.times do |x|
+            t.height.times do |y|
+              if rand(0..10) == 0
+                t.set(x: x, y: y, c: %w[
+                  #
+                  @
+                  .
+                  g
+                  r
+                  +
+                  =
+                ].sample)
+              else
+                t.set(x: x, y: y, c: " ")
+              end
+            end
+          end
+          t.refresh
+          break if t.getch == "q"
+        end
       end
     end
 

@@ -51,6 +51,18 @@ module GLW
       @next_tiles[[x, y]] = cell unless @tiles[[x, y]] == cell
     end
 
+    def width
+      Curses.cols
+    end
+
+    def height
+      Curses.lines
+    end
+
+    def getch
+      window.getch
+    end
+
     def refresh
       @next_tiles.each do |coords, cell|
         window.setpos *coords.reverse
