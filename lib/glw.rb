@@ -14,7 +14,12 @@ module GLW
         sleep 1
 
         t.set(x: 0, y: 0, c: " ")
-        t.set(x: 2, y: 1, c: "@")
+        t.set(x: 1, y: 1, c: "@")
+        t.refresh
+        sleep 1
+
+        t.set(x: 1, y: 1, c: " ")
+        t.set(x: 2, y: 2, c: "@")
         t.refresh
         sleep 1
       end
