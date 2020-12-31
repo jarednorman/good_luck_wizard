@@ -8,12 +8,14 @@ module GLW
     def start!
       initialize_zeitwerk
 
+      r = Random.new(123456789)
+
       GLW::Term.with_term do |t|
         loop do
           t.width.times do |x|
             t.height.times do |y|
-              if rand(0..10) == 0
-                t.set(x: x, y: y, c: %w[
+              if r.float < 0.1
+                t.set(x: x, y: y, c: r.sample(%w[
                   #
                   @
                   .
@@ -21,7 +23,7 @@ module GLW
                   r
                   +
                   =
-                ].sample)
+                ]))
               else
                 t.set(x: x, y: y, c: " ")
               end
