@@ -8,6 +8,10 @@ module GLW
       @state = seed & MASK64
     end
 
+    def sample(collection)
+      collection[integer % collection.length]
+    end
+
     def integer
       x = state
       x = (x ^ (x >> 12)) & MASK64

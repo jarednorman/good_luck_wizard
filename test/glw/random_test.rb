@@ -15,5 +15,17 @@ module GLW
       assert_equal 0.45332382223568857, r.float
       assert_equal 0.14579462399706244, r.float
     end
+
+    def test_sampling
+      r = GLW::Random.new(1234567)
+      c = [:foo, :bar, :baz]
+
+      assert_equal :foo, r.sample(c)
+      assert_equal :foo, r.sample(c)
+      assert_equal :foo, r.sample(c)
+      assert_equal :bar, r.sample(c)
+      assert_equal :foo, r.sample(c)
+      assert_equal :baz, r.sample(c)
+    end
   end
 end
