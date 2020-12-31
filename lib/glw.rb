@@ -33,14 +33,16 @@ module GLW
       end
     end
 
-    private
-
     def initialize_zeitwerk
+      return if @zeitwerk_enabled
+
       Zeitwerk::Loader.new.tap do |loader|
         loader.inflector.inflect("glw" => "GLW")
         loader.push_dir(__dir__)
         loader.setup
       end
+
+      @zeitwerk_enabled = true
     end
   end
 end
