@@ -11,26 +11,35 @@ module GLW
       r = Random.new(123456789)
 
       GLW::Term.with_term do |t|
+        player_x = 0
+        player_y = 0
+
         loop do
-          t.width.times do |x|
-            t.height.times do |y|
-              if r.float < 0.1
-                t.set(x: x, y: y, c: r.sample(%w[
-                  #
-                  @
-                  .
-                  g
-                  r
-                  +
-                  =
-                ]))
-              else
-                t.set(x: x, y: y, c: " ")
-              end
-            end
-          end
+
+          t.set(
+            x: player_x,
+            y: player_y,
+            c: "@"
+          )
+
           t.refresh
-          break if t.getch == "q"
+
+          t.set(
+            x: player_x,
+            y: player_y,
+            c: " "
+          )
+          case t.getch
+          when "q" then break
+          when "h"
+            player_x -= 1
+          when "l"
+            player_x += 1
+          when "k"
+            player_y -= 1
+          when "j"
+            player_y += 1
+          end
         end
       end
     end
