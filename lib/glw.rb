@@ -29,7 +29,8 @@ module GLW
           t.set(
             x: player_x,
             y: player_y,
-            c: " "
+            c: " ",
+            bg: 80
           )
           case t.getch
           when "q" then break
