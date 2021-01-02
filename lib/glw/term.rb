@@ -29,6 +29,7 @@ module GLW
       @window = window
       @tiles = Hash.new { DEFAULT_CELL }
       @next_tiles = {}
+      @colors = TermColors.new
     end
 
     def set(x:, y:, c:, fg: DEFAULT_FG, bg: DEFAULT_BG)
@@ -51,8 +52,12 @@ module GLW
 
     def refresh
       @next_tiles.each do |coords, cell|
-        window.setpos *coords.reverse
-        window << cell.c
+        x, y = *coords
+        window.setpos(y, x)
+
+        window.attron(colors[cell.fg, cell.bg]) do
+          window << cell.c
+        end
       end
 
       @tiles = @tiles.merge(@next_tiles)
@@ -62,6 +67,6 @@ module GLW
 
     private
 
-    attr_reader :window
+    attr_reader :window, :colors
   end
 end

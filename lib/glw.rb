@@ -19,7 +19,9 @@ module GLW
           t.set(
             x: player_x,
             y: player_y,
-            c: "@"
+            c: "@",
+            fg: 226,
+            bg: 89
           )
 
           t.refresh
