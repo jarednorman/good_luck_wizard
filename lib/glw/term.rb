@@ -6,23 +6,9 @@ module GLW
     DEFAULT_FG = 255
     DEFAULT_BG = 16
 
-    Cell = Struct.new(:c, :fg, :bg) do
-      def initialize(*args)
-        super
-        @dirty = true
-      end
-
-      def seen?
-        !@dirty
-      end
-
-      def seen!
-        @dirty = false
-      end
-    end
+    Cell = Struct.new(:c, :fg, :bg)
 
     DEFAULT_CELL = Cell.new(" ", DEFAULT_FG, DEFAULT_BG)
-    DEFAULT_CELL.seen!
 
     class << self
       def with_term
