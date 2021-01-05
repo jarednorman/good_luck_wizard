@@ -1,8 +1,20 @@
 module GLW
   class Game
-    def initialize
-      @player_x = 0
-      @player_y = 0
+    MAP = <<~TXT
+      ############          ######
+      #..........#          #....#
+      #..........############....#
+      #..........................#
+      #..........############....#
+      #..........#          #....#
+      ############          ######
+    TXT
+
+    def initialize(term:)
+      @player_x = 3
+      @player_y = 3
+      @term = term
+      @map = MAP.lines.map(&:chars)
     end
 
     def player_position
@@ -23,5 +35,32 @@ module GLW
         @player_y += 1
       end
     end
+
+    def render
+      player_x, player_y = *player_position
+
+      @map.each_with_index do |line, y|
+        line.each_with_index do |c, x|
+          term.set(
+            x: x,
+            y: y,
+            c: c
+          )
+        end
+      end
+
+      term.set(
+        x: player_x,
+        y: player_y,
+        c: "@",
+        fg: 220
+      )
+
+      term.refresh
+    end
+
+    private
+
+    attr_reader :term
   end
 end

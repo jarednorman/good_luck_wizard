@@ -9,28 +9,10 @@ module GLW
       initialize_zeitwerk
 
       GLW::Term.with_term do |t|
-        g = Game.new
+        g = Game.new(term: t)
 
         loop do
-          player_x, player_y = *g.player_position
-
-          t.set(
-            x: player_x,
-            y: player_y,
-            c: "@",
-            fg: 226,
-            bg: 89
-          )
-
-          t.refresh
-
-          t.set(
-            x: player_x,
-            y: player_y,
-            c: " ",
-            bg: 180
-          )
-
+          g.render
           break if g.send_key(t.getch) == :quit
         end
       end
