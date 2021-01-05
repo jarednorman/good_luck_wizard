@@ -30,17 +30,8 @@ module GLW
             c: " ",
             bg: 180
           )
-          case t.getch
-          when "q" then break
-          when "h"
-            g.move_player -1, 0
-          when "l"
-            g.move_player 1, 0
-          when "k"
-            g.move_player 0, -1
-          when "j"
-            g.move_player 0, 1
-          end
+
+          break if g.send_key(t.getch) == :quit
         end
       end
     end

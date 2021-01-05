@@ -9,9 +9,19 @@ module GLW
       [@player_x, @player_y]
     end
 
-    def move_player(dx, dy)
-      @player_x += dx
-      @player_y += dy
+    def send_key(key)
+      case key
+      when "q"
+        :quit
+      when "h"
+        @player_x -= 1
+      when "l"
+        @player_x += 1
+      when "k"
+        @player_y -= 1
+      when "j"
+        @player_y += 1
+      end
     end
   end
 end
