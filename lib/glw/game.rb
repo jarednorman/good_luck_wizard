@@ -17,30 +17,29 @@ module GLW
       @map = MAP.lines.map(&:chars)
     end
 
-    def player_position
-      [@player_x, @player_y]
-    end
-
     def send_key(key)
       case key
       when "q"
         :quit
       when "h"
-        @player_x -= 1
+        @player_x -= 1 if valid_player_position?(@player_x - 1, @player_y)
       when "l"
-        @player_x += 1
+        @player_x += 1 if valid_player_position?(@player_x + 1, @player_y)
       when "k"
-        @player_y -= 1
+        @player_y -= 1 if valid_player_position?(@player_x, @player_y - 1)
       when "j"
-        @player_y += 1
+        @player_y += 1 if valid_player_position?(@player_x, @player_y + 1)
       end
     end
 
-    def render
-      player_x, player_y = *player_position
+    def valid_player_position?(x, y)
+      @map[y][x] == "."
+    end
 
+    def render
       @map.each_with_index do |line, y|
         line.each_with_index do |c, x|
+          next if [x, y] == [@player_x, @player_y]
           term.set(
             x: x,
             y: y,
@@ -50,8 +49,8 @@ module GLW
       end
 
       term.set(
-        x: player_x,
-        y: player_y,
+        x: @player_x,
+        y: @player_y,
         c: "@",
         fg: 220
       )
