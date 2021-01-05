@@ -9,10 +9,10 @@ module GLW
       initialize_zeitwerk
 
       GLW::Term.with_term do |t|
-        player_x = 0
-        player_y = 0
+        g = Game.new
 
         loop do
+          player_x, player_y = *g.player_position
 
           t.set(
             x: player_x,
@@ -33,13 +33,13 @@ module GLW
           case t.getch
           when "q" then break
           when "h"
-            player_x -= 1
+            g.move_player -1, 0
           when "l"
-            player_x += 1
+            g.move_player 1, 0
           when "k"
-            player_y -= 1
+            g.move_player 0, -1
           when "j"
-            player_y += 1
+            g.move_player 0, 1
           end
         end
       end
