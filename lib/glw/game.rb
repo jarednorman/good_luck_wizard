@@ -15,6 +15,8 @@ module GLW
       @player_y = 3
       @term = term
       @map = MAP.lines.map(&:chars)
+      @offset_x = 10
+      @offset_y = 10
     end
 
     def send_key(key)
@@ -41,16 +43,16 @@ module GLW
         line.each_with_index do |c, x|
           next if [x, y] == [@player_x, @player_y]
           term.set(
-            x: x,
-            y: y,
+            x: x + @offset_x,
+            y: y + @offset_y,
             c: c
           )
         end
       end
 
       term.set(
-        x: @player_x,
-        y: @player_y,
+        x: @player_x + @offset_x,
+        y: @player_y + @offset_y,
         c: "@",
         fg: 220
       )
