@@ -1,22 +1,8 @@
 module GLW
   class Game
-    MAP = <<~TXT
-      ############
-      #..........#          ##########
-      #..........############....#...#
-      #..............................#
-      #.......g..############....#...#
-      #..........#          #....#...#
-      ############          ##########
-    TXT
-
     def initialize(term:)
-      @player_x = 3
-      @player_y = 3
+      @map = Map.new
       @term = term
-      @map = MAP.lines.map(&:chars)
-      @offset_x = 10
-      @offset_y = 10
     end
 
     def send_key(key)
@@ -24,44 +10,22 @@ module GLW
       when "q"
         :quit
       when "h"
-        @player_x -= 1 if valid_player_position?(@player_x - 1, @player_y)
+        @map.send_event :left
       when "l"
-        @player_x += 1 if valid_player_position?(@player_x + 1, @player_y)
+        @map.send_event :right
       when "k"
-        @player_y -= 1 if valid_player_position?(@player_x, @player_y - 1)
+        @map.send_event :up
       when "j"
-        @player_y += 1 if valid_player_position?(@player_x, @player_y + 1)
+        @map.send_event :down
       end
-    end
-
-    def valid_player_position?(x, y)
-      @map[y][x] == "."
     end
 
     def render
-      @map.each_with_index do |line, y|
-        line.each_with_index do |c, x|
-          next if [x, y] == [@player_x, @player_y]
-          term.set(
-            x: x + @offset_x,
-            y: y + @offset_y,
-            c: c
-          )
-        end
-      end
-
-      term.set(
-        x: @player_x + @offset_x,
-        y: @player_y + @offset_y,
-        c: "@",
-        fg: 220
-      )
-
-      term.refresh
+      map.render(term, width: term.width - 60, height: term.height)
     end
 
     private
 
-    attr_reader :term
+    attr_reader :term, :map
   end
 end
