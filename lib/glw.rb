@@ -8,8 +8,6 @@ module GLW
     def start!
       initialize_zeitwerk
 
-      r = Random.new(123456789)
-
       GLW::Term.with_term do |t|
         player_x = 0
         player_y = 0
@@ -30,7 +28,7 @@ module GLW
             x: player_x,
             y: player_y,
             c: " ",
-            bg: 80
+            bg: 180
           )
           case t.getch
           when "q" then break
