@@ -9,8 +9,6 @@ Zeitwerk::Loader.for_gem.tap do |loader|
   loader.setup
 end
 
-require "glw/version"
-
 module GLW
   class << self
     def start!
