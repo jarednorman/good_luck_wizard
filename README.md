@@ -1,4 +1,4 @@
-**Good Luck, Wizard**. You're going to need it. Especially because this is an
+🧙🏻 **Good Luck, Wizard**. You're going to need it. Especially because this is an
 _extremely_ unfinished game. It's hard to even call it a game at this point. You
 should come back later when there's something worth playing.
 
