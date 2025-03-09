@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require "glw"
-# FIXME: This shouldn't really be necessary. I don't know why I coded it like
-# this.
-GLW.initialize_zeitwerk
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
