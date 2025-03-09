@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-require 'glw'
+require "glw"
 GLW.start!

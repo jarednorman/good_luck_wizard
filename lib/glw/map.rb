@@ -41,7 +41,6 @@ module GLW
     def render(term, width:, height:)
       (0..width - 1).each do |x|
         (0..height - 1).each do |y|
-
           if [@player_x + @offset_x, @player_y + @offset_y] == [x, y]
             term.set(
               x: x,

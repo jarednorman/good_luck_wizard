@@ -1,4 +1,4 @@
-require 'curses'
+require "curses"
 require "zeitwerk"
 
 require "glw/version"
