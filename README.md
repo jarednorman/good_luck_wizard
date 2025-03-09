@@ -16,7 +16,7 @@ conduct](https://github.com/jarednorman/good_luck_wizard/blob/master/CODE_OF_CON
 
 ---
 
-**To run thep roject locally,** checck out the repo and run `bin/setup` to
+**To run the project locally,** check out the repo and run `bin/setup` to
 install dependencies. The tests are run with `bundle exec rspec`. You can also
 run `bin/console` for an interactive prompt that will allow you to experiment.
 
