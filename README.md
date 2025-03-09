@@ -7,11 +7,9 @@ good_luck_wizard` and run it with `glw`. This assumes you have a working Ruby
 environment and a new enough version of Ruby.
 
 **This project is not seeking contributions,** but bug reports are accepted [on
-GitHub](https://github.com/jarednorman/good_luck_wizard). This project is
-intended to be a safe, welcoming space for collaboration, and contributors are
-expected to adhere to the [Contributor
-Covenant](http://contributor-covenant.org) code of conduct.
+GitHub](https://github.com/jarednorman/good_luck_wizard).
 
+**This project is intended to be a safe, welcoming space for collaboration.**
 Everyone interacting in the _Good Luck, Wizard_ project’s codebases, issue
 trackers, chat rooms and mailing lists is expected to follow the [code of
 conduct](https://github.com/jarednorman/good_luck_wizard/blob/master/CODE_OF_CONDUCT.md).
