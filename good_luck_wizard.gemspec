@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "An unfinished terminal-based roguelike game"
   spec.description   = spec.summary
-  spec.homepage      = "http://github.com/jarednorman/glw"
+  spec.homepage      = "http://github.com/jarednorman/good_luck_wizard"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
