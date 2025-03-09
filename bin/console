@@ -3,5 +3,5 @@
 require "bundler/setup"
 require "glw"
 
-require "pry"
-Pry.start
+require "irb"
+IRB.start(__FILE__)

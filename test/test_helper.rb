@@ -4,4 +4,3 @@ GLW.initialize_zeitwerk
 
 require "minitest/pride"
 require "minitest/autorun"
-require "pry"
