@@ -20,7 +20,7 @@ conduct](https://github.com/jarednorman/good_luck_wizard/blob/master/CODE_OF_CON
 install dependencies. The tests are run with `bundle exec rspec`. You can also
 run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To release a new version, update the version number in `version.rb`, and then
-run `bundle exec rake release`, which will create a git tag for the version,
-push git commits and tags, and push the `.gem` file to
+**To release a new version,** update the version number in `version.rb`, and
+then run `bundle exec rake release`, which will create a git tag for the
+version, push git commits and tags, and push the `.gem` file to
 [rubygems.org](https://rubygems.org).
