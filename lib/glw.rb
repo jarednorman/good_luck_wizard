@@ -1,5 +1,13 @@
 require "curses"
+
 require "zeitwerk"
+Zeitwerk::Loader.for_gem.tap do |loader|
+  loader.inflector.inflect(
+    "glw" => "GLW"
+  )
+
+  loader.setup
+end
 
 require "glw/version"
 
@@ -19,15 +27,6 @@ module GLW
     end
 
     def initialize_zeitwerk
-      return if @zeitwerk_enabled
-
-      Zeitwerk::Loader.new.tap do |loader|
-        loader.inflector.inflect("glw" => "GLW")
-        loader.push_dir(__dir__)
-        loader.setup
-      end
-
-      @zeitwerk_enabled = true
     end
   end
 end
