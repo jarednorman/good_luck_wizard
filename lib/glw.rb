@@ -1,6 +1,6 @@
-require "curses"
-
 require "zeitwerk"
+require "io/console"
+
 Zeitwerk::Loader.for_gem.tap do |loader|
   loader.inflector.inflect(
     "glw" => "GLW"
@@ -12,7 +12,8 @@ end
 module GLW
   class << self
     def start!
-      puts "Starting GLW..."
+      Terminal.with do |terminal|
+      end
     end
   end
 end
