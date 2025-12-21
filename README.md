@@ -1,4 +1,4 @@
-**good Luck, wizard**. you're going to need it. not least of all because this is
+**good luck, wizard**. you're going to need it. not least of all because this is
 an _extremely_ unfinished game. not really a game at all, yet. come back later.
 
 if you absolutely must try it, you can install it with `gem install
