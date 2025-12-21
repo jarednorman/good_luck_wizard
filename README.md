@@ -1,26 +1,20 @@
-🧙🏻 **Good Luck, Wizard**. You're going to need it. Especially because this is an
-_extremely_ unfinished game. It's hard to even call it a game at this point. You
-should come back later when there's something worth playing.
+**good Luck, wizard**. you're going to need it. not least of all because this is
+an _extremely_ unfinished game. not really a game at all, yet. come back later.
 
-**If you absolutely must try it, you can install it** with `gem install
-good_luck_wizard` and run it with `glw`. This assumes you have a working Ruby
+if you absolutely must try it, you can install it with `gem install
+good_luck_wizard` and run it with `glw`. this assumes you have a working Ruby
 environment and a new enough version of Ruby.
 
-**This project is not seeking contributions,** but bug reports are accepted [on
+this project is not seeking contributions, but bug reports are accepted [on
 GitHub](https://github.com/jarednorman/good_luck_wizard).
 
-**This project is intended to be a safe, welcoming space for collaboration.**
-Everyone interacting in the _Good Luck, Wizard_ project’s codebases, issue
-trackers, chat rooms and mailing lists is expected to follow the [code of
+this project is intended to be a safe, welcoming space for collaboration. yes,
+even though i don't want you to contribute, i will still ensure you aren't
+descriminated against if you try. everyone interacting in the _good luck,
+wizard_ project’s codebases, issue trackers, chat rooms and mailing lists is
+expected to follow the [code of
 conduct](https://github.com/jarednorman/good_luck_wizard/blob/master/CODE_OF_CONDUCT.md).
 
----
-
-**To run the project locally,** check out the repo and run `bin/setup` to
-install dependencies. The tests are run with `bundle exec rspec`. You can also
-run `bin/console` for an interactive prompt that will allow you to experiment.
-
-**To release a new version,** update the version number in `version.rb`, and
-then run `bundle exec rake release`, which will create a git tag for the
-version, push git commits and tags, and push the `.gem` file to
-[rubygems.org](https://rubygems.org).
+to run the project locally: check out the repo and run `bin/setup` to install
+dependencies. the tests are run with `bundle exec rspec`. you can also run
+`bin/console` for an interactive prompt that will allow you to experiment.
