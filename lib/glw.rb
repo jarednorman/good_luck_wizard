@@ -1,6 +1,5 @@
-require "curses"
-
 require "zeitwerk"
+
 Zeitwerk::Loader.for_gem.tap do |loader|
   loader.inflector.inflect(
     "glw" => "GLW"

@@ -24,6 +24,5 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 3.4.0"
 
-  spec.add_dependency "curses", "~> 1.4.0"
   spec.add_dependency "zeitwerk", "~> 2.4"
 end
