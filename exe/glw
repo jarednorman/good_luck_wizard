@@ -1,4 +1,11 @@
 #!/usr/bin/env ruby
 
+if ENV["DEBUG"] == "true"
+  # This avoids terminal corruption unless something has actually gone wrong.
+  ENV["RUBY_DEBUG_LOG_LEVEL"] = "ERROR"
+
+  require "debug/open_nonstop"
+end
+
 require "glw"
 GLW.start!
