@@ -1,4 +1,5 @@
 require "io/console"
+require "concurrent/actor"
 
 require "zeitwerk"
 
@@ -13,11 +14,19 @@ end
 module GLW
   class << self
     def start!
-      # Read input until we get a "q" then exist.
       IO.console.raw do
+        Screen.start!
+
+        Screen.push_state(
+          BufferState.blank(
+            height: IO.console.winsize[0],
+            width: IO.console.winsize[1]
+          )
+        )
+
         loop do
           content = STDIN.readpartial(1)
-          STDOUT.write(content.inspect)
+
           exit(0) if content == 'Q'
         end
       end
