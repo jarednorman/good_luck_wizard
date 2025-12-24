@@ -32,6 +32,10 @@ module GLW
       @queue.pop
     end
 
+    def empty?
+      @queue.empty?
+    end
+
     def start!
       return if @queue
 
