@@ -3,8 +3,8 @@
 
 require_relative "lib/glw"
 
-puts "Input Test - Press keys to see symbols (press 'q' to quit)"
-puts "Try: letters, numbers, arrows, ESC, space, tab, enter, backspace"
+puts "Input Test - Press keys to see symbols (press 'q' or Ctrl-C to quit)"
+puts "Try: letters, numbers, arrows, ESC, space, tab, enter, backspace, Ctrl-C"
 puts "-" * 60
 
 IO.console.raw do
@@ -14,7 +14,7 @@ IO.console.raw do
     key = GLW::Input.pop
     puts "Received: #{key.inspect}"
 
-    break if key == :k_q
+    break if key == :k_q || key == :k_ctrl_c
   end
 end
 

@@ -12,6 +12,7 @@ module GLW
         "\x7F" => :k_backspace,
         "\b" => :k_backspace,
         " " => :k_space,
+        "\x03" => :k_ctrl_c,
         "[" => :k_left_bracket,
         "]" => :k_right_bracket,
         ";" => :k_semicolon,

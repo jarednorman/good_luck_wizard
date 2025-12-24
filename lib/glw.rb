@@ -21,7 +21,7 @@ module GLW
         loop do
           content = Input.pop
 
-          exit(0) if content == :k_Q
+          exit(0) if content == :k_escape || content == :k_ctrl_c
         end
       end
     rescue
