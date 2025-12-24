@@ -15,11 +15,14 @@ module GLW
   class << self
     def start!
       IO.console.raw do
-        Screen.start!
-        Input.start!
+        screen = Screen.new
+        input = Input.new
+
+        screen.start!
+        input.start!
 
         loop do
-          content = Input.pop
+          content = input.pop
 
           exit(0) if content == :k_escape || content == :k_ctrl_c
         end
