@@ -21,9 +21,11 @@ module GLW
         loop do
           content = Input.pop
 
-          exit(0) if content == "Q"
+          exit(0) if content == :k_Q
         end
       end
+    rescue
+      raise
     end
   end
 end
