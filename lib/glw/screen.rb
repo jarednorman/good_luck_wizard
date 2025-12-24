@@ -36,6 +36,8 @@ module GLW
         )
 
         Thread.new do
+          STDOUT.print Terminal.hide_cursor
+
           last_state = nil
 
           loop do

@@ -22,6 +22,10 @@ module GLW
       def set_bg(color)
         PALETTE.fetch(color)[1]
       end
+
+      def hide_cursor
+        "\e[?25l"
+      end
     end
   end
 end

@@ -30,4 +30,10 @@ RSpec.describe GLW::Terminal do
       expect { described_class.set_bg(:wizard) }.to raise_error KeyError
     end
   end
+
+  describe ".hide_cursor" do
+    it "returns ANSI escape sequence to hide the cursor" do
+      expect(described_class.hide_cursor).to eq "\e[?25l"
+    end
+  end
 end
