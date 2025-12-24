@@ -16,9 +16,10 @@ module GLW
     def start!
       IO.console.raw do
         Screen.start!
+        Input.start!
 
         loop do
-          content = STDIN.readpartial(1)
+          content = Input.pop
 
           exit(0) if content == "Q"
         end
