@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "date"
+require "fileutils"
+
+# Parse version argument
+if ARGV.empty?
+  puts "Usage: bin/release VERSION"
+  puts "Example: bin/release 1.2.3"
+  exit 1
+end
+
+version = ARGV[0]
+unless version.match?(/^\d+\.\d+\.\d+$/)
+  puts "Error: Version must be in format X.Y.Z (e.g., 1.2.3)"
+  exit 1
+end
+
+puts "Releasing version #{version}..."
+
+# 1. Update lib/glw/version.rb
+version_file = "lib/glw/version.rb"
+version_content = File.read(version_file)
+updated_version_content = version_content.gsub(
+  /VERSION = "[^"]+"/, 
+  %(VERSION = "#{version}")
+)
+File.write(version_file, updated_version_content)
+puts "✓ Updated #{version_file}"
+
+# 4. Commit changes
+commit_message = "v#{version}"
+system("jj", "commit", "-m", commit_message) || exit(1)
+puts "✓ Committed changes with message '#{commit_message}'"
+
+# 5. Move main branch to the change we just made
+system("jj", "bookmark", "set", "main", "-r", "@-") || exit(1)
+puts "✓ Moved main branch to release commit"
+
+# 6. Tag the version
+tag_name = "v#{version}"
+tag_message = "Version #{version}"
+system("git", "tag", "-m", tag_message, tag_name) || exit(1)
+puts "✓ Created tag #{tag_name}"
+
+# 7. Push changes and tags
+system("jj", "git", "push", "-b", "main") || exit(1)
+puts "✓ Pushed main branch"
+
+system("git", "push", "--tags") || exit(1)
+puts "✓ Pushed tags"
+
+# 8. Build and push gem
+gem_file = "good_luck_wizard-#{version}.gem"
+system("gem", "build", "good_luck_wizard.gemspec") || exit(1)
+puts "✓ Built gem"
+
+system("gem", "push", gem_file) || exit(1)
+puts "✓ Pushed gem"
+
+system("rm", gem_file)
+puts "✓ Cleaned up gem file"
+
+puts "\n🎉 Successfully released version #{version}!"
