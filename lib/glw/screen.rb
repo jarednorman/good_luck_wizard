@@ -1,6 +1,32 @@
 module GLW
   module Screen
     class << self
+      UpdateBlock = Data.define(:start_index, :cells) do
+        def self.make(start_index) = new(start_index, [])
+
+        def to_s(current_fg: nil, current_bg: nil)
+          output = ""
+          fg = current_fg
+          bg = current_bg
+
+          cells.each do |cell|
+            if cell.fg_color != fg
+              output << Terminal.set_fg(cell.fg_color)
+              fg = cell.fg_color
+            end
+
+            if cell.bg_color != bg
+              output << Terminal.set_bg(cell.bg_color)
+              bg = cell.bg_color
+            end
+
+            output << cell.char
+          end
+
+          [output, fg, bg]
+        end
+      end
+
       def start!
         @render_queue = Thread::Queue.new
 
@@ -34,55 +60,40 @@ module GLW
         updates = []
         current_block = nil
 
-        # Phase 1 & 2: Detect changes and build contiguous horizontal blocks
         state.cells.each_with_index do |cell, index|
           next if last_state && cell == last_state.cells[index]
 
-          # Convert linear index to (x, y) coordinates
-          y = index / state.width
-          x = index % state.width
-
-          # Check if this cell continues the current block
-          if current_block && current_block[:y] == y &&
-             current_block[:x] + current_block[:cells].length == x
-            current_block[:cells] << cell
+          if current_block && current_block.start_index + current_block.cells.length == index
+            current_block.cells << cell
           else
-            # Save current block if it exists
             updates << current_block if current_block
 
-            # Start new block
-            current_block = { x: x, y: y, cells: [cell] }
+            current_block = UpdateBlock.new(index, [cell])
           end
         end
 
-        # Don't forget to save the last block
         updates << current_block if current_block
 
-        # Phase 3: Build output string with color optimization
-        output = ''
         current_fg = nil
         current_bg = nil
 
-        updates.each do |block|
-          output << Terminal.move_to(block[:x], block[:y])
+        STDOUT.print(
+          updates.flat_map do |block|
+            y = block.start_index / state.width
+            x = block.start_index % state.width
 
-          block[:cells].each do |cell|
-            if cell.fg_color != current_fg
-              output << Terminal.set_fg(cell.fg_color)
-              current_fg = cell.fg_color
-            end
+            block_output, current_fg, current_bg = block.to_s(
+              current_fg:,
+              current_bg:
+            )
 
-            if cell.bg_color != current_bg
-              output << Terminal.set_bg(cell.bg_color)
-              current_bg = cell.bg_color
-            end
+            [
+              Terminal.move_to(x, y),
+              block_output
+            ]
+          end.join
+        )
 
-            output << cell.char
-          end
-        end
-
-        # Phase 4: Single write
-        STDOUT.print output
         STDOUT.flush
       end
     end
