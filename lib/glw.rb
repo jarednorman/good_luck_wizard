@@ -32,11 +32,9 @@ module GLW
           until input.empty?
             key = input.pop
 
-            if key == :k_escape || key == :k_ctrl_c
-              exit(0)
-            else
-              universe.handle_input(key)
-            end
+            exit(0) if key == :k_escape || key == :k_ctrl_c
+
+            universe.singletons[Components::Input].push key
           end
 
           height, width = *IO.console.winsize

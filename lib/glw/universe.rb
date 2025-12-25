@@ -1,11 +1,7 @@
 module GLW
   class Universe
-    def initialize
-      # ECS setup will go here
-    end
-
-    def handle_input(key)
-      # Process player input, trigger turn
+    def singletons
+      @singletons ||= Hash.new { |h, k| h[k] = k.make }
     end
 
     def render(width:, height:)
